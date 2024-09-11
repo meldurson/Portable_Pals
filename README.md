@@ -31,7 +31,10 @@
     
     \* standard equipment from random pool, this includes Fueling weapons or type of Dverger Mage (not custom items that are given to creatures possibvle with some mods)
 
-</details>
+</details>  
+
+
+![Tooltip](https://raw.githubusercontent.com/meldurson/Portable_Pals/main/media/tooltip.png)  
 
 ##
 If you like this mod or any of my other mods and want to support me, you can on [Ko-fi](https://ko-fi.com/meldurson)
