@@ -1,16 +1,21 @@
 
-
 # Portable Pals
 ### Take your tames with you, wherever you go, in your trusty Pal Stone!  
 ##
-### Latest Update
-    Version 0.0.1
+### Updates
+    Version 0.0.3
+	* Fixed error with vikingNPC causing mass spawning.
+	* Added special types of PalStones
+    Version 0.0.2
+    * Fixed unable to repair if crafting station level set to 5
+	Version 0.0.1
     * Release
     * Can store creatures in portable stone
 	
 
 ## Features
 * Easy catch and release of tamed creatures
+* Creatures can gain buffs from being captured
 * Compatibility with CLLC effects and infusions
 * Compatibility with AllTameable DNA
 * Compatibility with saddles
@@ -52,11 +57,11 @@ If you like this mod or any of my other mods and want to support me, you can on 
 ##
 ### Known Issues:
 
-* Does not save any special data from VikingNPCs
+* Does not save many special data from VikingNPCs
 
 
 ### Future Plans:
-* Make multiple types of Pal Stone that grant buffs to the creature on release
+* ~~Make multiple types of Pal Stone that grant buffs to the creature on release~~
 
 ### Contact:
 The most reliable way to reach out would be to ping me in the [Valheim Modding Discord](https://discord.com/invite/GUEBuCuAMz) under @Meldurson or dm me on Discord.
