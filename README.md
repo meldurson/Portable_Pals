@@ -2,15 +2,9 @@
 # Portable Pals
 ### Take your tames with you, wherever you go, in your trusty Pal Stone!  
 ##
-### Updates
-    Version 0.0.3
-	* Fixed error with vikingNPC causing mass spawning.
-	* Added special types of PalStones
-    Version 0.0.2
-    * Fixed unable to repair if crafting station level set to 5
-	Version 0.0.1
-    * Release
-    * Can store creatures in portable stone
+### Last Update
+	Version 0.0.5
+	* Updated to Bog Witch
 	
 
 ## Features
