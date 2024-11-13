@@ -3,8 +3,10 @@
 ### Take your tames with you, wherever you go, in your trusty Pal Stone!  
 ##
 ### Last Update
-	Version 0.0.5
-	* Updated to Bog Witch
+	Version 0.0.6
+	* Added compatibility with MonsterModifiers
+    * Can no longer accidentally capture babies causing an error
+    * Fixed server recipe sync
 	
 
 ## Features
@@ -12,6 +14,7 @@
 * Creatures can gain buffs from being captured
 * Compatibility with CLLC effects and infusions
 * Compatibility with AllTameable DNA
+* Compatibility with Monster Modifiers
 * Compatibility with saddles
 * easy configuration of recipe, durability, and cooldown
 
@@ -26,6 +29,7 @@
     - Equipment*
     - AllTameable DNA
     - CLLC infusions and Effects
+    - Monster Modifier
     
     
     \* standard equipment from random pool, this includes Fueling weapons or type of Dverger Mage (not custom items that are given to creatures possibvle with some mods)
