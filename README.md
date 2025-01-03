@@ -3,10 +3,10 @@
 ### Take your tames with you, wherever you go, in your trusty Pal Stone!  
 ##
 ### Last Update
-	Version 0.0.6
-	* Added compatibility with MonsterModifiers
-    * Can no longer accidentally capture babies causing an error
-    * Fixed server recipe sync
+	Version 0.0.7 
+    * Added localization
+    * Fixed warning about deleting recipe
+    * Modified default recipes
 	
 
 ## Features
@@ -32,7 +32,7 @@
     - Monster Modifier
     
     
-    \* standard equipment from random pool, this includes Fueling weapons or type of Dverger Mage (not custom items that are given to creatures possibvle with some mods)
+    \* standard equipment from random pool, this includes Fueling weapons or type of Dverger Mage (not custom items that are given to creatures possible with some mods)
 
 </details>  
 
