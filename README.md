@@ -3,10 +3,10 @@
 ### Take your tames with you, wherever you go, in your trusty Pal Stone!  
 ##
 ### Last Update
-	Version 0.0.7 
-    * Added localization
-    * Fixed warning about deleting recipe
-    * Modified default recipes
+	Version 0.1.0
+    * Fixed issue with CLLC without AllTameable
+    * Added Compatibility to DragonRider
+    * Added ability to capture baby creatures not just full grown
 	
 
 ## Features
@@ -27,6 +27,7 @@
     - Saddle
     - Last Fed
     - Equipment*
+    - Growup Time
     - AllTameable DNA
     - CLLC infusions and Effects
     - Monster Modifier
