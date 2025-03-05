@@ -3,10 +3,9 @@
 ### Take your tames with you, wherever you go, in your trusty Pal Stone!  
 ##
 ### Last Update
-	Version 0.1.0
-    * Fixed issue with CLLC without AllTameable
-    * Added Compatibility to DragonRider
-    * Added ability to capture baby creatures not just full grown
+	Version 0.1.1
+    * Fixed recipe bug caused by Valheim Update
+	* Implemented stricter network version allowance
 	
 
 ## Features
