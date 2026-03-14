@@ -3,15 +3,17 @@
 ### Take your tames with you, wherever you go, in your trusty Pal Stone!  
 ##
 ### Last Update
-	Version 0.1.1
-    * Fixed recipe bug caused by Valheim Update
-	* Implemented stricter network version allowance
+	Version 0.2.0
+	* Fixed localize issue
+	* Fixed SLS support
+	* Added Creature Genetics Support
 	
 
 ## Features
 * Easy catch and release of tamed creatures
 * Creatures can gain buffs from being captured
 * Compatibility with CLLC effects and infusions
+* Compatibility with SLS
 * Compatibility with AllTameable DNA
 * Compatibility with Monster Modifiers
 * Compatibility with saddles
@@ -28,7 +30,9 @@
     - Equipment*
     - Growup Time
     - AllTameable DNA
+	- Creature Genetics DNA
     - CLLC infusions and Effects
+	- Star Level Systems Data
     - Monster Modifier
     
     
@@ -62,4 +66,4 @@ If you like this mod or any of my other mods and want to support me, you can on 
 * ~~Make multiple types of Pal Stone that grant buffs to the creature on release~~
 
 ### Contact:
-The most reliable way to reach out would be to ping me in the [Valheim Modding Discord](https://discord.com/invite/GUEBuCuAMz) under @Meldurson or dm me on Discord.
+The most reliable way to reach out would be to ping me in the [Valheim Modding Discord](https://discord.com/invite/GUEBuCuAMz) under @Meldurson. or dm me on Discord.
