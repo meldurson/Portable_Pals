@@ -232,40 +232,24 @@ Use `PostAwake` when:
 ## `CanCapture`
 
 ```csharp
-public static bool CanCapture(
-    Character character,
-    Player player)
+public static bool CanCapture(Character character, Player player)
 ```
 
-This API provides a compatibility point for mods that need to prevent certain creatures from being captured by Portable Pals.
+This API provides a compatibility point for mods that need to prevent certain creatures from being captured into a Palstone.
 
-The method returns:
+If the creature can be captured it should return `true`. Best is to only change the `__result` if you are setting it to false.
 
-```csharp
-true
-```
-
-if the creature can be captured, and:
-
-```csharp
-false
-```
-
-if it cannot.
+__Important:__ When modifying the result, use: `ref bool __result` which allows your patch to change the value returned by the API.
 
 ### Example Harmony patch
 
 ```csharp
-[HarmonyPatch(
-    typeof(PortablePals.API),
-    nameof(PortablePals.API.CanCapture))]
+[HarmonyPatch(typeof(PortablePals.API),nameof(PortablePals.API.CanCapture))]
 public static class CanCapturePatch
 {
-    static void Postfix(
-        Character character,
-        Player player,
-        ref bool __result)
+    static void Postfix(Character character,Player player,ref bool __result)
     {
+        if(!__result){return;}//don't bother checking, as already failed
         if (character.GetComponent<MySpecialComponent>() != null)
         {
             __result = false;
@@ -276,223 +260,24 @@ public static class CanCapturePatch
 
 This allows your mod to add additional capture restrictions without directly modifying Portable Pals.
 
-### Important
 
-When modifying the result, use:
-
-```csharp
-ref bool __result
-```
-
-This allows your patch to change the value returned by the API.
 
 ---
 
-# 6. Adding or Updating Custom Data
 
-## `AddOrUpdateCustomData`
-
-```csharp
-public static void AddOrUpdateCustomData(
-    Dictionary<string, string> customData,
-    string key,
-    string newValue)
-```
-
-This is a convenience method for safely adding or updating an entry in the custom data dictionary.
-
-### Example
-
-```csharp
-PortablePals.API.AddOrUpdateCustomData(
-    customData,
-    "MyMod_Level",
-    "10");
-```
-
-If `MyMod_Level` does not exist, it is added.
-
-If it already exists, its value is updated.
-
-This is preferable to manually doing:
-
-```csharp
-if (customData.ContainsKey("MyMod_Level"))
-{
-    customData["MyMod_Level"] = "10";
-}
-else
-{
-    customData.Add("MyMod_Level", "10");
-}
-```
-
-### Recommended usage
-
-When adding data during the save process:
-
-```csharp
-PortablePals.API.AddOrUpdateCustomData(
-    customData,
-    "MyMod_Level",
-    level.ToString());
-```
-
----
-
-# Complete Example
-
-The following example demonstrates a mod that stores a creature's custom level when captured and restores it when the creature is released.
-
-```csharp
-using System.Collections.Generic;
-using HarmonyLib;
-using PortablePals;
-using UnityEngine;
-
-public static class PortablePalsIntegration
-{
-    private const string LevelKey = "MyMod_Level";
-
-    public static void Initialize()
-    {
-        // Register the ZDO value if your mod uses one.
-        PortablePals.API.AddZDOToSavedValues(LevelKey);
-    }
-
-    [HarmonyPatch(
-        typeof(PortablePals.API),
-        nameof(PortablePals.API.SaveDataToPalStone))]
-    private static class SavePatch
-    {
-        static void Prefix(
-            Character character,
-            Dictionary<string, string> customData)
-        {
-            int level = GetCreatureLevel(character);
-
-            PortablePals.API.AddOrUpdateCustomData(
-                customData,
-                LevelKey,
-                level.ToString());
-        }
-    }
-
-    [HarmonyPatch(
-        typeof(PortablePals.API),
-        nameof(PortablePals.API.ReleaseCreature_PreAwake))]
-    private static class PreAwakePatch
-    {
-        static void Prefix(
-            Character character,
-            Dictionary<string, string> customData)
-        {
-            if (!customData.TryGetValue(
-                LevelKey,
-                out string levelString))
-            {
-                return;
-            }
-
-            if (!int.TryParse(levelString, out int level))
-            {
-                return;
-            }
-
-            // Restore data that must exist before Awake.
-            character.m_nview.GetZDO().Set(
-                LevelKey,
-                level);
-        }
-    }
-
-    [HarmonyPatch(
-        typeof(PortablePals.API),
-        nameof(PortablePals.API.ReleaseCreature_PostAwake))]
-    private static class PostAwakePatch
-    {
-        static void Prefix(
-            Character character,
-            Dictionary<string, string> customData)
-        {
-            if (!customData.TryGetValue(
-                LevelKey,
-                out string levelString))
-            {
-                return;
-            }
-
-            if (!int.TryParse(levelString, out int level))
-            {
-                return;
-            }
-
-            // Perform operations that require Awake() to have completed.
-            ApplyCreatureLevel(character, level);
-        }
-    }
-
-    private static int GetCreatureLevel(Character character)
-    {
-        return 1;
-    }
-
-    private static void ApplyCreatureLevel(
-        Character character,
-        int level)
-    {
-        // Restore your mod's state here.
-    }
-}
-```
-
----
 
 # API Summary
 
-| API                           | Purpose                                                       |
+| API                           |   Purpose                                                       |
 | ----------------------------- | ------------------------------------------------------------- |
 | `AddZDOToSavedValues()`       | Tell Portable Pals to preserve a specific ZDO value           |
+| `AddOrUpdateCustomData()`     | Safely add or update Palstone custom data                     |
 | `SaveDataToPalStone()`        | Patch point for adding custom data when capturing             |
 | `ReleaseCreature_PreAwake()`  | Patch point for restoring data before the creature wakes      |
 | `ReleaseCreature_PostAwake()` | Patch point for restoring/using data after the creature wakes |
 | `CanCapture()`                | Patch point for preventing a creature from being captured     |
-| `AddOrUpdateCustomData()`     | Safely add or update Palstone custom data                     |
 
-## Recommended Integration Pattern
 
-For most mods, the integration flow should look like this:
-
-```text
-Creature
-   │
-   │ Capture
-   ▼
-SaveDataToPalStone
-   │
-   ├── ZDO data → automatically saved if registered
-   │
-   └── Custom data → added by your mod
-   │
-   ▼
-Palstone
-   │
-   │ Release
-   ▼
-ReleaseCreature_PreAwake
-   │
-   └── Restore ZDO / initialization data
-   │
-   ▼
-Creature Awake
-   │
-   ▼
-ReleaseCreature_PostAwake
-   │
-   └── Restore initialized components / perform final setup
-   ▼
-Fully restored creature
-```
 
 ### Best Practices
 
@@ -509,7 +294,7 @@ Fully restored creature
 **Use `PreAwake` when:**
 
 * The data must be available during initialization.
-* Another component reads the value from the ZDO during `Awake()`.
+* Another component reads the value during `Awake()`.
 
 **Use `PostAwake` when:**
 
