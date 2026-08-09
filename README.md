@@ -3,10 +3,12 @@
 ### Take your tames with you, wherever you go, in your trusty Pal Stone!  
 ##
 ### Last Update
-	Version 0.2.0
-	* Fixed localize issue
-	* Fixed SLS support
-	* Added Creature Genetics Support
+    Version 0.3.0
+    * Added API for mod compatibility
+    * Added compatibility for Better Riding, OdinHorse
+    * Added ability to block captures based on mod requirements
+    * Fixed SLS support (v1.4.2)
+
 	
 
 ## Features
@@ -17,7 +19,8 @@
 * Compatibility with AllTameable DNA
 * Compatibility with Monster Modifiers
 * Compatibility with saddles
-* easy configuration of recipe, durability, and cooldown
+* Easy configuration of recipe, durability, and cooldown
+* __NEW API for easier mod support__ **[wiki](https://github.com/meldurson/Portable_Pals/blob/main/API-Wiki.md)**
 
     <details>
   <summary>Full list of saved traits</summary>
@@ -34,7 +37,8 @@
     - CLLC infusions and Effects
 	- Star Level Systems Data
     - Monster Modifier
-    
+    - Odin Horse Color
+    - Better Riding Bonded Player
     
     \* standard equipment from random pool, this includes Fueling weapons or type of Dverger Mage (not custom items that are given to creatures possible with some mods)
 
@@ -64,6 +68,7 @@ If you like this mod or any of my other mods and want to support me, you can on 
 
 ### Future Plans:
 * ~~Make multiple types of Pal Stone that grant buffs to the creature on release~~
+* Change the icon to let you know the palstone is full
 
 ### Contact:
 The most reliable way to reach out would be to ping me in the [Valheim Modding Discord](https://discord.com/invite/GUEBuCuAMz) under @Meldurson. or dm me on Discord.
