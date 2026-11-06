@@ -3,8 +3,9 @@
 ### Take your tames with you, wherever you go, in your trusty Pal Stone!  
 ##
 ### Last Update
-    Version 0.3.1
-    * Updated to Valheim 1.0
+    Version 0.3.4
+    * Fixed compatibility with some mods that add inventory slots
+	* Fixed compatibility with SLS
 
 	
 
@@ -65,7 +66,7 @@ If you like this mod or any of my other mods and want to support me, you can on 
 
 ### Future Plans:
 * ~~Make multiple types of Pal Stone that grant buffs to the creature on release~~
-* Change the icon to let you know the palstone is full
+* ~~Change the icon to let you know the palstone is full~~
 
 ### Contact:
 The most reliable way to reach out would be to ping me in the [Valheim Modding Discord](https://discord.com/invite/X3thsRXAJD) under @Meldurson. or dm me on Discord.
